@@ -1,0 +1,76 @@
+﻿<Window x:Class="demmo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:demmo"
+        mc:Ignorable="d"
+           Title="Список клиентов" Height="600" Width="1100">
+    <Grid>
+        <!-- Верхняя панель с поиском, фильтрацией и кнопкой "Добавить клиента" -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0">
+            <!-- Поле поиска -->
+            <TextBox x:Name="SearchBox" Width="200" Height="30" TextChanged="SearchBox_TextChanged" />
+            <Label Content="Поиск по ФИО, email, телефону" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,12,0,0" Foreground="Gray" FontSize="12" />
+
+            <!-- Фильтр по полу -->
+            <ComboBox x:Name="GenderFilter" Width="100" Height="30" Margin="20,0,0,0" SelectionChanged="GenderFilter_SelectionChanged">
+                <ComboBoxItem Content="Все" />
+                <ComboBoxItem Content="M" />
+                <ComboBoxItem Content="F" />
+            </ComboBox>
+
+            <!-- Фильтр по дням рождения -->
+            <CheckBox x:Name="BirthdayFilter" Content="Дни рождения в текущем месяце" Margin="20,0,0,0" Checked="BirthdayFilter_Checked" Unchecked="BirthdayFilter_Unchecked" />
+
+            <!-- Кнопка "Добавить клиента" -->
+            <Button Content="Добавить клиента" Click="AddClient_Click" Width="150" Height="30" Margin="20,0,0,0" />
+
+            <!-- Кнопка "Посещения" -->
+            <Button Content="Посещения" Click="VisitsButton_Click" Width="150" Height="30" Margin="20,0,0,0" />
+        </StackPanel>
+
+        <!-- Таблица клиентов -->
+        <DataGrid x:Name="ClientsGrid" AutoGenerateColumns="False" Margin="10,50,10,60" SelectionChanged="ClientsGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" />
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday, StringFormat=d}" />
+                <DataGridTextColumn Header="Дата добавления" Binding="{Binding RegistrationDate, StringFormat=g}" />
+                <DataGridTextColumn Header="Пол" Binding="{Binding GenderCode}" />
+                <DataGridTemplateColumn Header="Теги">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding Tags}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}" Background="{Binding Color}" Padding="5" Margin="2" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки навигации -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+            <Button Content="Предыдущая страница" Click="PreviousPage_Click" />
+            <Button Content="Следующая страница" Click="NextPage_Click" />
+        </StackPanel>
+
+        <!-- Информация о странице -->
+        <TextBlock x:Name="PageInfo" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
+
+        <!-- Удаление клиента -->
+        <Button Content="Удалить клиента" Click="DeleteClient_Click" Width="150" Height="30" Margin="10,10,0,0" HorizontalAlignment="Right" />
+
+        <!-- Кнопка для редактирования клиента -->
+        <Button Content="Редактировать клиента" Click="EditClient_Click" Width="150" Height="30" Margin="0,317,0,237" HorizontalAlignment="Right" />
+    </Grid>
+</Window>

@@ -1,0 +1,102 @@
+﻿<Application x:Class="demmo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:demmo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Основной стиль окна -->
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#FFE5E5E5" />
+            <!-- Светло-серый фон -->
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <!-- Стиль кнопок -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FFC0CB" />
+            <!-- Нежный розовый -->
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#FFB6C1" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5,2" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFB6C1" BlurRadius="5" ShadowDepth="2" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+        </Style>
+
+        <!-- Стиль текстовых полей -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF696969" />
+            <!-- Темно-розовый текст -->
+            <Setter Property="BorderBrush" Value="#FFC0CB" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5,2" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFC0CB" BlurRadius="3" ShadowDepth="1" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль меток -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FF696969" />
+            <!-- Темно-розовый текст -->
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <!-- Стиль DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF696969" />
+            <Setter Property="BorderBrush" Value="#FFC0CB" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="AlternatingRowBackground" Value="#FFF0F0F0" />
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFC0CB" BlurRadius="3" ShadowDepth="1" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#FF696969" />
+            <Setter Property="BorderBrush" Value="#FFC0CB" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5,2" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFC0CB" BlurRadius="3" ShadowDepth="1" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль TextBlock -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF696969" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Application.Resources>
+</Application>
